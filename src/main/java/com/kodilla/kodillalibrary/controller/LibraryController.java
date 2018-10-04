@@ -1,38 +1,46 @@
 package com.kodilla.kodillalibrary.controller;
 
 import com.kodilla.kodillalibrary.domain.BookCopyDto;
-import com.kodilla.kodillalibrary.domain.BookRental;
 import com.kodilla.kodillalibrary.domain.ReaderDto;
 import com.kodilla.kodillalibrary.domain.TitleDto;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
+@RequestMapping("/v1/library")
 public class LibraryController {
-    public void createReader(ReaderDto readerDto){
+
+    @RequestMapping(method = RequestMethod.POST, value = "createReader", consumes = APPLICATION_JSON_VALUE)
+    public void createReader(@RequestBody ReaderDto readerDto){
 
     }
 
-    public void createTitle(TitleDto titleDto) {
+    @RequestMapping(method = RequestMethod.POST, value = "createTitle", consumes = APPLICATION_JSON_VALUE)
+    public void createTitle(@RequestBody TitleDto titleDto) {
 
     }
 
-    public void createBookCopy(BookCopyDto bookCopyDto) {
+    @RequestMapping(method = RequestMethod.POST, value = "createTitle", consumes = APPLICATION_JSON_VALUE)
+    public void createBookCopy(@RequestBody BookCopyDto bookCopyDto) {
 
     }
 
-    public BookCopyDto updateBookCopyStatus (BookCopyDto bookCopyDto) {
+    @RequestMapping(method = RequestMethod.PUT, value = "updateBookCopyStatus")
+    public BookCopyDto updateBookCopyStatus (@RequestBody BookCopyDto bookCopyDto) {
         return new BookCopyDto(1L, 2L, "Updated status");
     }
 
-    public BookCopyDto getBookCopyQuantity (Long titleId) {
+    @RequestMapping(method = RequestMethod.GET, value = "getBookCopyQuantity")
+    public BookCopyDto getBookCopyQuantity (@RequestParam Long titleId) {
         return new BookCopyDto(1L, 2L, "Status");
     }
 
-    public void rentBook(Long bookCopyId, Long readerId) {
+    public void rentBook(@RequestParam Long bookCopyId, @RequestParam Long readerId) {
 
     }
 
-    public void returnBook(Long bookCopyId, Long readerId) {
+    public void returnBook(@RequestParam Long bookCopyId, @RequestParam Long readerId) {
 
     }
 }
