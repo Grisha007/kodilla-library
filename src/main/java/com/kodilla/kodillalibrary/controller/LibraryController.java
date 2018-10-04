@@ -20,7 +20,7 @@ public class LibraryController {
 
     }
 
-    public BookCopyDto updateBookCopyStatus (BookCopyDto) {
+    public BookCopyDto updateBookCopyStatus (BookCopyDto bookCopyDto) {
         return new BookCopyDto(1L, 2L, "Updated status");
     }
 
@@ -28,11 +28,11 @@ public class LibraryController {
         return new BookCopyDto(1L, 2L, "Status");
     }
 
-    public BookRental rentBook(Long bookCopyId, Long readerId) {
-        return new BookRental();
+    public void rentBook(Long bookCopyId, Long readerId) {
+
     }
 
-    public BookRental returnBook(Long bookCopyId, Long readerId) {
-        return new BookRental();
+    public void returnBook(Long bookCopyId, Long readerId) {
+
     }
 }

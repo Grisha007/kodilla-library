@@ -2,12 +2,12 @@ package com.kodilla.kodillalibrary.domain;
 
 public class BookCopy {
     private Long id;
-    private Long titleId;
+    private Title title;
     private String status;
 
-    public BookCopy(Long id, Long titleId, String status) {
+    public BookCopy(Long id, Title title, String status) {
         this.id = id;
-        this.titleId = titleId;
+        this.title = title;
         this.status = status;
     }
 
@@ -19,8 +19,8 @@ public class BookCopy {
         return id;
     }
 
-    public Long getTitleId() {
-        return titleId;
+    public Title getTitle() {
+        return title;
     }
 
     public String getStatus() {
