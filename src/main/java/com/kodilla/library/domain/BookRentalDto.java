@@ -1,22 +1,28 @@
-package com.kodilla.kodillalibrary.domain;
+package com.kodilla.library.domain;
 
 import java.time.LocalDate;
 
-public class BookRental {
+public class BookRentalDto {
+    private Long id;
     private Long bookCopyId;
     private Long readerId;
     private LocalDate dateOfRent;
     private LocalDate dateOfReturn;
 
-    public BookRental(Long bookCopyId, Long readerId, LocalDate dateOfRent, LocalDate dateOfReturn) {
+    public BookRentalDto(Long id, Long bookCopyId, Long readerId, LocalDate dateOfRent, LocalDate dateOfReturn) {
+        this.id = id;
         this.bookCopyId = bookCopyId;
         this.readerId = readerId;
         this.dateOfRent = dateOfRent;
         this.dateOfReturn = dateOfReturn;
     }
 
-    public BookRental() {
+    public BookRentalDto() {
 
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public Long getBookCopyId() {

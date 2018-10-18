@@ -1,4 +1,4 @@
-package com.kodilla.kodillalibrary.domain;
+package com.kodilla.library.domain;
 
 public class BookCopyDto {
     private Long id;

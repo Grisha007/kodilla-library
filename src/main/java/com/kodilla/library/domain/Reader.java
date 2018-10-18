@@ -1,11 +1,18 @@
-package com.kodilla.kodillalibrary.domain;
+package com.kodilla.library.domain;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity(name = "READER")
 public class Reader {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "READER_NAME")
     private String name;
+    @Column(name = "READER_SURNAME")
     private String surname;
+    @Column(name = "CREATE_ACCOUNT_DATE")
     private LocalDate createAccountDate;
 
     public Reader(Long id, String name, String surname, LocalDate createAccountDate) {
