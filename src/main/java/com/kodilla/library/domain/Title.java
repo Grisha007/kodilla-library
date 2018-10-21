@@ -1,6 +1,7 @@
 package com.kodilla.library.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "TITLE")
@@ -16,7 +17,7 @@ public class Title {
     private int publicationYear;
     @OneToMany(targetEntity = BookCopy.class,
                 mappedBy = "title")
-    private List<BookCopy> copies;
+    private List<BookCopy> copies = new ArrayList<>();
 
     public Title(Long id, String title, String author, int publicationYear) {
         this.id = id;

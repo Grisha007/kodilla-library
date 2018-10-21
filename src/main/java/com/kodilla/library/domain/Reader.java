@@ -2,6 +2,8 @@ package com.kodilla.library.domain;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "READER")
 public class Reader {
@@ -14,6 +16,9 @@ public class Reader {
     private String surname;
     @Column(name = "CREATE_ACCOUNT_DATE")
     private LocalDate createAccountDate;
+    @OneToMany(targetEntity = BookRental.class,
+            mappedBy = "bookCopy")
+    private List<BookRental> rentals = new ArrayList<>();
 
     public Reader(Long id, String name, String surname, LocalDate createAccountDate) {
         this.id = id;

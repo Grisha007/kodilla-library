@@ -1,6 +1,8 @@
 package com.kodilla.library.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "BOOK_COPY")
 public class BookCopy {
@@ -12,6 +14,9 @@ public class BookCopy {
     private Title title;
     @Column(name = "STATUS")
     private String status;
+    @OneToMany(targetEntity = BookRental.class,
+            mappedBy = "dateOfRent")
+    private List<BookRental> rentals = new ArrayList<>();
 
     public BookCopy(Long id, Title title, String status) {
         this.id = id;
