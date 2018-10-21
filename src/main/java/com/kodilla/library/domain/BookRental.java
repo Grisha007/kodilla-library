@@ -8,11 +8,13 @@ public class BookRental {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "BOOK_COPY_QUANTITY")
+    @ManyToOne
+    @JoinColumn(name = "BOOK_COPY_ID")
     private BookCopy bookCopy;
     @Column(name = "READER")
     private Reader reader;
-    @Column(name = "DATE_OF_RENT")
+    @ManyToOne
+    @JoinColumn(name = "DATE_OF_RENT_ID")
     private LocalDate dateOfRent;
     @Column(name = "DATE_OF_RETURN")
     private LocalDate dateOfReturn;
