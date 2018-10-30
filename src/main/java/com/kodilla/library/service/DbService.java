@@ -47,8 +47,9 @@ public class DbService {
         return titleRepository.findOne(titleId);
     }
 
-    public void returnBook(BookCopy bookCopy, Reader reader) {
-
+    public void returnBook(BookRental bookRental) {
+        bookRental.setDateOfReturn(LocalDate.now());
+        bookRentalRepository.save(bookRental);
     }
 
     public Reader saveReader(final Reader reader) {
@@ -57,5 +58,9 @@ public class DbService {
 
     public Title saveTitle(Title title) {
         return titleRepository.save(title);
+    }
+
+    public void saveBookCopy(BookCopy bookCopy) {
+        bookCopyRepository.save(bookCopy);
     }
 }

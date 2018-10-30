@@ -1,5 +1,8 @@
 package com.kodilla.library.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TitleDto {
     private Long id;
     private String title;

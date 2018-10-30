@@ -15,7 +15,7 @@ public class BookCopy {
     @Column(name = "STATUS")
     private String status;
     @OneToMany(targetEntity = BookRental.class,
-            mappedBy = "dateOfRent")
+            mappedBy = "bookCopy")
     private List<BookRental> rentals = new ArrayList<>();
 
     public BookCopy(Long id, Title title, String status) {
@@ -38,5 +38,9 @@ public class BookCopy {
 
     public String getStatus() {
         return status;
+    }
+
+    public List<BookRental> getRentals() {
+        return rentals;
     }
 }

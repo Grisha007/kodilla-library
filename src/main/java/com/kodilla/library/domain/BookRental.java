@@ -11,10 +11,10 @@ public class BookRental {
     @ManyToOne
     @JoinColumn(name = "BOOK_COPY_ID")
     private BookCopy bookCopy;
-    @Column(name = "READER")
-    private Reader reader;
     @ManyToOne
-    @JoinColumn(name = "DATE_OF_RENT_ID")
+    @JoinColumn(name = "READER_ID")
+    private Reader reader;
+    @Column(name = "DATE_OF_RENT")
     private LocalDate dateOfRent;
     @Column(name = "DATE_OF_RETURN")
     private LocalDate dateOfReturn;
@@ -49,5 +49,9 @@ public class BookRental {
 
     public LocalDate getDateOfReturn() {
         return dateOfReturn;
+    }
+
+    public void setDateOfReturn(LocalDate dateOfReturn) {
+        this.dateOfReturn = dateOfReturn;
     }
 }

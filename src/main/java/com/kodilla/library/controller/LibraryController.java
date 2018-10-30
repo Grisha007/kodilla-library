@@ -1,6 +1,7 @@
 package com.kodilla.library.controller;
 
 import com.kodilla.library.domain.BookCopyDto;
+import com.kodilla.library.domain.BookRentalDto;
 import com.kodilla.library.domain.ReaderDto;
 import com.kodilla.library.domain.TitleDto;
 import com.kodilla.library.mapper.LibraryMapper;
@@ -19,10 +20,10 @@ public class LibraryController {
     @Autowired
     private LibraryMapper libraryMapper;
 
-    @RequestMapping(method = RequestMethod.GET, value = "getTitleList")
-    public List<TitleDto> getTitleList() {
-        return libraryMapper.mapToTitleDtoList(dbService.getAllTitles());
-    }
+//    @RequestMapping(method = RequestMethod.GET, value = "getTitleList")
+//    public List<TitleDto> getTitleList() {
+//        return libraryMapper.mapToTitleDtoList(dbService.getAllTitles());
+//    }
 
     @RequestMapping(method = RequestMethod.POST, value = "createReader", consumes = APPLICATION_JSON_VALUE)
     public void createReader(@RequestBody ReaderDto readerDto){
@@ -36,24 +37,26 @@ public class LibraryController {
 
     @RequestMapping(method = RequestMethod.POST, value = "createBookCopy", consumes = APPLICATION_JSON_VALUE)
     public void createBookCopy(@RequestBody BookCopyDto bookCopyDto) {
-        //czy ja mam tworzyc bookCopy, czy to nie powinno automatycznie sie dodac skoro jest powiazane z Title?
+        dbService.saveBookCopy(libraryMapper.mapToBookCopy(bookCopyDto));
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "updateBookCopyStatus")
-    public BookCopyDto updateBookCopyStatus (@RequestBody BookCopyDto bookCopyDto) {
-        return new BookCopyDto(1L, 2L, "Updated status");
-    }
+//    @RequestMapping(method = RequestMethod.PUT, value = "updateBookCopyStatus")
+//    public BookCopyDto updateBookCopyStatus (@RequestBody BookCopyDto bookCopyDto) {
+//        return new BookCopyDto(1L, 2L, "Updated status");
+//    }
+//
+//    @RequestMapping(method = RequestMethod.GET, value = "getBookCopyQuantity")
+//    public BookCopyDto getBookCopyQuantity (@RequestParam Long titleId) {
+//        return new BookCopyDto(1L, 2L, "Status");
+//    }
 
-    @RequestMapping(method = RequestMethod.GET, value = "getBookCopyQuantity")
-    public BookCopyDto getBookCopyQuantity (@RequestParam Long titleId) {
-        return new BookCopyDto(1L, 2L, "Status");
-    }
-
+    @RequestMapping(method = RequestMethod.POST, value = "rentBook")
     public void rentBook(@RequestParam Long bookCopyId, @RequestParam Long readerId) {
         dbService.rentBook(libraryMapper.mapToBookCopy(bookCopyId), libraryMapper.mapToReader(readerId));
     }
 
-    public void returnBook(@RequestParam Long bookCopyId, @RequestParam Long readerId) {
-        dbService.returnBook(libraryMapper.mapToBookCopy(bookCopyId), libraryMapper.mapToReader(readerId)); //nie wiem czy to jest ok
+    @RequestMapping(method = RequestMethod.POST, value = "returnBook")
+    public void returnBook(@RequestBody BookRentalDto bookRentalDto) {
+        dbService.returnBook(libraryMapper.mapToBookRental(bookRentalDto));
     }
 }

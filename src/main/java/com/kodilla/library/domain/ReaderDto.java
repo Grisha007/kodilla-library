@@ -1,6 +1,8 @@
 package com.kodilla.library.domain;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReaderDto {
     private Long id;

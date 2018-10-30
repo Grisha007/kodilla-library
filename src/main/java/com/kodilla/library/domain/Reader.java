@@ -17,7 +17,7 @@ public class Reader {
     @Column(name = "CREATE_ACCOUNT_DATE")
     private LocalDate createAccountDate;
     @OneToMany(targetEntity = BookRental.class,
-            mappedBy = "bookCopy")
+            mappedBy = "reader")
     private List<BookRental> rentals = new ArrayList<>();
 
     public Reader(Long id, String name, String surname, LocalDate createAccountDate) {
@@ -45,5 +45,9 @@ public class Reader {
 
     public LocalDate getCreateAccountDate() {
         return createAccountDate;
+    }
+
+    public List<BookRental> getRentals() {
+        return rentals;
     }
 }
